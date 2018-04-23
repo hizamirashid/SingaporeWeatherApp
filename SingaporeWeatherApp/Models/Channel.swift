@@ -12,53 +12,18 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct Channel : Codable {
+struct Channel : Decodable {
 	let units : Units?
 	let title : String?
 	let link : String?
 	let description : String?
 	let language : String?
 	let lastBuildDate : String?
-	let ttl : Int?
+	let ttl : String?
 	let location : Location?
 	let wind : Wind?
 	let atmosphere : Atmosphere?
 	let astronomy : Astronomy?
 	let image : Image?
 	let item : Item?
-
-	enum CodingKeys: String, CodingKey {
-
-		case units
-		case title = "title"
-		case link = "link"
-		case description = "description"
-		case language = "language"
-		case lastBuildDate = "lastBuildDate"
-		case ttl = "ttl"
-		case location
-		case wind
-		case atmosphere
-		case astronomy
-		case image
-		case item
-	}
-
-	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		units = try Units(from: decoder)
-		title = try values.decodeIfPresent(String.self, forKey: .title)
-		link = try values.decodeIfPresent(String.self, forKey: .link)
-		description = try values.decodeIfPresent(String.self, forKey: .description)
-		language = try values.decodeIfPresent(String.self, forKey: .language)
-		lastBuildDate = try values.decodeIfPresent(String.self, forKey: .lastBuildDate)
-		ttl = try values.decodeIfPresent(Int.self, forKey: .ttl)
-		location = try Location(from: decoder)
-		wind = try Wind(from: decoder)
-		atmosphere = try Atmosphere(from: decoder)
-		astronomy = try Astronomy(from: decoder)
-		image = try Image(from: decoder)
-		item = try Item(from: decoder)
-	}
-
 }

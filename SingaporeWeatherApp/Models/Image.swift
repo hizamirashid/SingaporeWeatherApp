@@ -12,29 +12,10 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct Image : Codable {
+struct Image : Decodable {
 	let title : String?
-	let width : Int?
-	let height : Int?
+	let width : String?
+	let height : String?
 	let link : String?
 	let url : String?
-
-	enum CodingKeys: String, CodingKey {
-
-		case title = "title"
-		case width = "width"
-		case height = "height"
-		case link = "link"
-		case url = "url"
-	}
-
-	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		title = try values.decodeIfPresent(String.self, forKey: .title)
-		width = try values.decodeIfPresent(Int.self, forKey: .width)
-		height = try values.decodeIfPresent(Int.self, forKey: .height)
-		link = try values.decodeIfPresent(String.self, forKey: .link)
-		url = try values.decodeIfPresent(String.self, forKey: .url)
-	}
-
 }

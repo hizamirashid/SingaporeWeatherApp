@@ -12,23 +12,8 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct Wind : Codable {
-	let chill : Int?
-	let direction : Int?
-	let speed : Int?
-
-	enum CodingKeys: String, CodingKey {
-
-		case chill = "chill"
-		case direction = "direction"
-		case speed = "speed"
-	}
-
-	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		chill = try values.decodeIfPresent(Int.self, forKey: .chill)
-		direction = try values.decodeIfPresent(Int.self, forKey: .direction)
-		speed = try values.decodeIfPresent(Int.self, forKey: .speed)
-	}
-
+struct Wind : Decodable {
+	let chill : String?
+	let direction : String?
+	let speed : String?
 }

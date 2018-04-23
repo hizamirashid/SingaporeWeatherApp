@@ -12,26 +12,9 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct Query : Codable {
-	let count : Int?
+struct Query : Decodable {
+	let count : String?
 	let created : String?
 	let lang : String?
-	let results : Results?
-
-	enum CodingKeys: String, CodingKey {
-
-		case count = "count"
-		case created = "created"
-		case lang = "lang"
-		case results
-	}
-
-	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		count = try values.decodeIfPresent(Int.self, forKey: .count)
-		created = try values.decodeIfPresent(String.self, forKey: .created)
-		lang = try values.decodeIfPresent(String.self, forKey: .lang)
-		results = try Results(from: decoder)
-	}
-
+	let results : ResultsWeather?
 }

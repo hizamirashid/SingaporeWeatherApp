@@ -12,17 +12,6 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct Weather : Codable {
+struct Weather : Decodable {
 	let query : Query?
-
-	enum CodingKeys: String, CodingKey {
-
-		case query
-	}
-
-	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		query = try Query(from: decoder)
-	}
-
 }

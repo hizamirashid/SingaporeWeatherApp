@@ -12,23 +12,8 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct Location : Codable {
+struct Location : Decodable {
 	let city : String?
 	let country : String?
 	let region : String?
-
-	enum CodingKeys: String, CodingKey {
-
-		case city = "city"
-		case country = "country"
-		case region = "region"
-	}
-
-	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		city = try values.decodeIfPresent(String.self, forKey: .city)
-		country = try values.decodeIfPresent(String.self, forKey: .country)
-		region = try values.decodeIfPresent(String.self, forKey: .region)
-	}
-
 }

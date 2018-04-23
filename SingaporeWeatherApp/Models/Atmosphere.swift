@@ -12,26 +12,9 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct Atmosphere : Codable {
-	let humidity : Int?
-	let pressure : Double?
-	let rising : Int?
-	let visibility : Double?
-
-	enum CodingKeys: String, CodingKey {
-
-		case humidity = "humidity"
-		case pressure = "pressure"
-		case rising = "rising"
-		case visibility = "visibility"
-	}
-
-	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		humidity = try values.decodeIfPresent(Int.self, forKey: .humidity)
-		pressure = try values.decodeIfPresent(Double.self, forKey: .pressure)
-		rising = try values.decodeIfPresent(Int.self, forKey: .rising)
-		visibility = try values.decodeIfPresent(Double.self, forKey: .visibility)
-	}
-
+struct Atmosphere : Decodable {
+	let humidity : String?
+	let pressure : String?
+	let rising : String?
+	let visibility : String?
 }

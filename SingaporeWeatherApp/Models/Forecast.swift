@@ -12,32 +12,11 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct Forecast : Codable {
-	let code : Int?
+struct Forecast : Decodable {
+	let code : String?
 	let date : String?
 	let day : String?
-	let high : Int?
-	let low : Int?
+	let high : String?
+	let low : String?
 	let text : String?
-
-	enum CodingKeys: String, CodingKey {
-
-		case code = "code"
-		case date = "date"
-		case day = "day"
-		case high = "high"
-		case low = "low"
-		case text = "text"
-	}
-
-	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		code = try values.decodeIfPresent(Int.self, forKey: .code)
-		date = try values.decodeIfPresent(String.self, forKey: .date)
-		day = try values.decodeIfPresent(String.self, forKey: .day)
-		high = try values.decodeIfPresent(Int.self, forKey: .high)
-		low = try values.decodeIfPresent(Int.self, forKey: .low)
-		text = try values.decodeIfPresent(String.self, forKey: .text)
-	}
-
 }

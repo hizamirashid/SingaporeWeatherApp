@@ -12,20 +12,7 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct Astronomy : Codable {
+struct Astronomy : Decodable {
 	let sunrise : String?
 	let sunset : String?
-
-	enum CodingKeys: String, CodingKey {
-
-		case sunrise = "sunrise"
-		case sunset = "sunset"
-	}
-
-	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		sunrise = try values.decodeIfPresent(String.self, forKey: .sunrise)
-		sunset = try values.decodeIfPresent(String.self, forKey: .sunset)
-	}
-
 }

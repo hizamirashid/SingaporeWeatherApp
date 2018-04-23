@@ -12,26 +12,9 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct Condition : Codable {
-	let code : Int?
+struct Condition : Decodable {
+	let code : String?
 	let date : String?
-	let temp : Int?
+	let temp : String?
 	let text : String?
-
-	enum CodingKeys: String, CodingKey {
-
-		case code = "code"
-		case date = "date"
-		case temp = "temp"
-		case text = "text"
-	}
-
-	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		code = try values.decodeIfPresent(Int.self, forKey: .code)
-		date = try values.decodeIfPresent(String.self, forKey: .date)
-		temp = try values.decodeIfPresent(Int.self, forKey: .temp)
-		text = try values.decodeIfPresent(String.self, forKey: .text)
-	}
-
 }

@@ -12,17 +12,6 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct Results : Codable {
+struct ResultsWeather : Decodable {
 	let channel : Channel?
-
-	enum CodingKeys: String, CodingKey {
-
-		case channel
-	}
-
-	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		channel = try Channel(from: decoder)
-	}
-
 }

@@ -12,41 +12,14 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct Item : Codable {
+struct Item : Decodable {
 	let title : String?
-	let lat : Double?
-	let long : Double?
+	let lat : String?
+	let long : String?
 	let link : String?
 	let pubDate : String?
 	let condition : Condition?
 	let forecast : [Forecast]?
 	let description : String?
 	let guid : Guid?
-
-	enum CodingKeys: String, CodingKey {
-
-		case title = "title"
-		case lat = "lat"
-		case long = "long"
-		case link = "link"
-		case pubDate = "pubDate"
-		case condition
-		case forecast = "forecast"
-		case description = "description"
-		case guid
-	}
-
-	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		title = try values.decodeIfPresent(String.self, forKey: .title)
-		lat = try values.decodeIfPresent(Double.self, forKey: .lat)
-		long = try values.decodeIfPresent(Double.self, forKey: .long)
-		link = try values.decodeIfPresent(String.self, forKey: .link)
-		pubDate = try values.decodeIfPresent(String.self, forKey: .pubDate)
-		condition = try Condition(from: decoder)
-		forecast = try values.decodeIfPresent([Forecast].self, forKey: .forecast)
-		description = try values.decodeIfPresent(String.self, forKey: .description)
-		guid = try Guid(from: decoder)
-	}
-
 }

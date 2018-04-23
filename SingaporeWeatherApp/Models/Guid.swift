@@ -12,17 +12,6 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct Guid : Codable {
-	let isPermaLink : Bool?
-
-	enum CodingKeys: String, CodingKey {
-
-		case isPermaLink = "isPermaLink"
-	}
-
-	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		isPermaLink = try values.decodeIfPresent(Bool.self, forKey: .isPermaLink)
-	}
-
+struct Guid : Decodable {
+	let isPermaLink : String?
 }

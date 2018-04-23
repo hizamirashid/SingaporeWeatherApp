@@ -12,26 +12,9 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct Units : Codable {
+struct Units : Decodable {
 	let distance : String?
 	let pressure : String?
 	let speed : String?
 	let temperature : String?
-
-	enum CodingKeys: String, CodingKey {
-
-		case distance = "distance"
-		case pressure = "pressure"
-		case speed = "speed"
-		case temperature = "temperature"
-	}
-
-	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		distance = try values.decodeIfPresent(String.self, forKey: .distance)
-		pressure = try values.decodeIfPresent(String.self, forKey: .pressure)
-		speed = try values.decodeIfPresent(String.self, forKey: .speed)
-		temperature = try values.decodeIfPresent(String.self, forKey: .temperature)
-	}
-
 }
