@@ -22,7 +22,8 @@ class WeatherCell: UITableViewCell {
     func configure(with weatherObject: ForecastRealm) {
         
         self.dateLbl.text = weatherObject.forecast_Date
-        self.temperatureLbl.text = "\(weatherObject.forecast_Low) - \(weatherObject.forecast_High)"
+        guard let low = weatherObject.forecast_Low, let high = weatherObject.forecast_High else { return }
+        self.temperatureLbl.text = "\(low) - \(high)"
         self.weatherLbl.text = weatherObject.forecast_Text
         
     }

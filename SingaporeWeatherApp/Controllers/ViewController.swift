@@ -29,12 +29,39 @@ class ViewController: UIViewController {
         forecasts = realm.objects(ForecastRealm.self)
         
         // call the weather api
-        getWeathers()
+        
+        if weathers.isEmpty {
+            getWeathers()
+        } else {
+            self.updateUI()
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func updateUI() {
+        
+        let weather = weathers[0]
+        
+        guard let city = weather.city,
+            let country = weather.country,
+            let condition_Date = weather.condition_Date,
+            let condition_Temperature = weather.condition_Temperature,
+            let condition_Text = weather.condition_Text else { return }
+        // set navigation title
+        self.title = "\(city), \(country)"
+        
+        let view = (Bundle.main.loadNibNamed("WeatherHeaderTableView", owner: self, options: nil)![0] as? WeatherHeaderTableView)
+        view?.dateLbl.text = condition_Date
+        view?.temperatureLbl.text = condition_Temperature
+        view?.weatherLbl.text = condition_Text
+        self.tableView.tableHeaderView = view
+        
+        self.tableView.reloadData()
     }
     
     // MARK:- API CALL
@@ -66,7 +93,9 @@ class ViewController: UIViewController {
                     let newWeatherRealm = WeatherRealm(city: city, country: country, condition_Date: condition_Date, condition_Temperature: condition_Temperature, condition_Text: condition_Text, forecast:self.foreCastArray)
                     RealmHelper.shared.create(newWeatherRealm)
                     
-                    self.tableView.reloadData()
+                    // update interface
+                    self.updateUI()
+                    
                 } catch {
                     print(error)
                 }
@@ -83,7 +112,7 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.foreCastArray.count
+        return self.forecasts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

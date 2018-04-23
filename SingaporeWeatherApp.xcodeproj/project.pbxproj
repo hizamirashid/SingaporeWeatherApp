@@ -164,6 +164,7 @@
 				4337843C208E383900912911 /* Helper */,
 				43046A26208E2E030005E255 /* Models */,
 				43046A25208E2DE90005E255 /* Storyboards */,
+				4337844D208E4E1900912911 /* Views */,
 				43378452208E5BDB00912911 /* Controllers */,
 				43378443208E3CA400912911 /* Cells */,
 				43046A24208E2DD70005E255 /* Misc */,
@@ -211,7 +212,6 @@
 		43046A26208E2E030005E255 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				4337844D208E4E1900912911 /* ReusableViews */,
 				43378446208E3FCD00912911 /* Realms */,
 				43046A31208E2E640005E255 /* Astronomy.swift */,
 				43046A2F208E2E640005E255 /* Atmosphere.swift */,
@@ -258,13 +258,13 @@
 			path = Realms;
 			sourceTree = "<group>";
 		};
-		4337844D208E4E1900912911 /* ReusableViews */ = {
+		4337844D208E4E1900912911 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				4337844E208E4E4900912911 /* WeatherHeaderTableView.xib */,
 				43378450208E4F1700912911 /* WeatherHeaderTableView.swift */,
 			);
-			path = ReusableViews;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		43378452208E5BDB00912911 /* Controllers */ = {

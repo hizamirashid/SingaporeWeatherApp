@@ -13,7 +13,7 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 
 import Foundation
 struct Query : Decodable {
-	let count : String?
+	let count : Int?
 	let created : String?
 	let lang : String?
 	let results : ResultsWeather?
